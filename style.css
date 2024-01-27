@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .container {
+    border: 1px solid red;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .square {
+    border: 1px solid black;
+    flex-basis: calc(100% / var(--numberOfSquare));
+    transition: background-color 0.5s ease;
+  }
+  
+ .reset {
+    padding: 6px;
+    width: 5%;
+ }
