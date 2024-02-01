@@ -1,6 +1,22 @@
 * {
     box-sizing: border-box;
   }
+
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .button-section {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   
   .container {
     border: 1px solid red;
@@ -18,5 +34,5 @@
   
  .reset, .opacity, .random-color {
     padding: 6px;
-    width: 7%;
+    width: 120px;
  }
