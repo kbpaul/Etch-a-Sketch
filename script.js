@@ -2,12 +2,19 @@ const container = document.querySelector('.container');
 let numberOfSquare = 16; // Default value
 
 let functionToCall = addBlack;
+let currentColorFunction = addBlack; // Keep track of the current color function
+
 
 //prompt user to enter a number of square on reset
 const reset = document.querySelector('.reset');
 
 reset.addEventListener('click', () => {
     numberOfSquare = promptForValidInput();
+
+
+    // Reset the current color 
+    currentColorFunction = addBlack;
+    functionToCall = currentColorFunction;
 
     createGrid(numberOfSquare);
 
@@ -18,12 +25,14 @@ reset.addEventListener('click', () => {
 
 const setProgressiveColor = document.querySelector('.opacity');
 setProgressiveColor.addEventListener('click', () => {
-     functionToCall = toggleBackgroundColorWithOpacity;
-     addBackgroundColor();
+    currentColorFunction = toggleBackgroundColorWithOpacity;
+    functionToCall = toggleBackgroundColorWithOpacity;
+    addBackgroundColor();
 });
 
 const setRandomColorButton = document.querySelector('.random-color');
 setRandomColorButton.addEventListener('click', () => {
+    currentColorFunction = toggleBackgroundColorWithRGBRandomColors;
     functionToCall = toggleBackgroundColorWithRGBRandomColors;
     addBackgroundColor();
 });
@@ -79,6 +88,15 @@ function createGrid(numberOfSquare){
 // Function to add color
 function addBackgroundColor() {
     const divElements = container.querySelectorAll('div.square');
+
+    // Remove all existing event listeners
+    divElements.forEach((div) => {
+        div.removeEventListener('mouseover', addBlack);
+        div.removeEventListener('mouseover', toggleBackgroundColorWithOpacity);
+        div.removeEventListener('mouseover', toggleBackgroundColorWithRGBRandomColors);
+    });
+
+     // Add the new event listener
     divElements.forEach( (div) => {
         div.addEventListener('mouseover', functionToCall);
     });
