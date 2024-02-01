@@ -16,7 +16,7 @@
     transition: background-color 0.5s ease;
   }
   
- .reset, .opacity {
+ .reset, .opacity, .random-color {
     padding: 6px;
-    width: 5%;
+    width: 7%;
  }
